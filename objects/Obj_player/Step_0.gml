@@ -47,6 +47,9 @@ if (v != 0)
     }
 }
 
+// Profundidade (hierarquia)
+depth = -bbox_bottom;
+
 // Direção
 if (andando)
 {

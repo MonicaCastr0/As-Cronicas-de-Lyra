@@ -1,18 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"Obj_lyra",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"Obj_coluna",
+  "eventList":[],
   "managed":true,
-  "name":"Obj_lyra",
+  "name":"Obj_coluna",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objetos",
-    "path":"folders/Objetos.yy",
+    "name":"decoracao",
+    "path":"folders/Objetos/decoracao.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_decor_pai",
+    "path":"objects/obj_decor_pai/obj_decor_pai.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Spr_lyra",
-    "path":"sprites/Spr_lyra/Spr_lyra.yy",
+    "name":"Spr_coluna",
+    "path":"sprites/Spr_coluna/Spr_coluna.yy",
   },
   "spriteMaskId":null,
   "visible":true,
