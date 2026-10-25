@@ -5,9 +5,7 @@
   "inheritCode":false,
   "inheritCreationOrder":false,
   "inheritLayers":false,
-  "instanceCreationOrder":[
-    {"name":"inst_3BFF0A2B","path":"rooms/Room2/Room2.yy",},
-  ],
+  "instanceCreationOrder":[],
   "isDnd":false,
   "layers":[
     {"$GMRTileLayer":"","%Name":"Tiles_efeito","depth":0,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Tiles_efeito","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":125,"SerialiseWidth":125,"TileCompressedData":[
@@ -27,9 +25,7 @@
           0,-35,2194,-4,2147,-4,2194,1,0,-79,-2147483648,-46,0,-79,-2147483648,-46,0,-79,-2147483648,-46,0,-6799,
           -2147483648,
         ],"TileDataFormat":1,},"tilesetId":{"name":"Tile_jardim3","path":"tilesets/Tile_jardim3/Tile_jardim3.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
-    {"$GMRInstanceLayer":"","%Name":"Instances","depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
-        {"$GMRInstance":"v4","%Name":"inst_3BFF0A2B","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3BFF0A2B","objectId":{"name":"Obj_lyra","path":"objects/Obj_lyra/Obj_lyra.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":0.828125,"scaleY":0.796875,"x":887.0,"y":665.0,},
-      ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
+    {"$GMRInstanceLayer":"","%Name":"Instances","depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRTileLayer":"","%Name":"Tiles_col","depth":200,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Tiles_col","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":125,"SerialiseWidth":125,"TileCompressedData":[
           -4167,-2147483648,1,0,-125,-2147483648,1,0,-251,-2147483648,1,0,-118,-2147483648,-40,0,-85,-2147483648,
           -40,0,-85,-2147483648,-40,0,-78,-2147483648,43,1073741941,1073741932,1073741923,1073741941,1073741932,
@@ -265,7 +261,7 @@
   },
   "sequenceId":null,
   "views":[
-    {"hborder":540,"hport":720,"hspeed":-1,"hview":720,"inherit":false,"objectId":{"name":"Obj_lyra","path":"objects/Obj_lyra/Obj_lyra.yy",},"vborder":360,"visible":true,"vspeed":-1,"wport":1280,"wview":1080,"xport":0,"xview":0,"yport":0,"yview":0,},
+    {"hborder":540,"hport":720,"hspeed":-1,"hview":720,"inherit":false,"objectId":null,"vborder":360,"visible":true,"vspeed":-1,"wport":1280,"wview":1080,"xport":0,"xview":0,"yport":0,"yview":0,},
     {"hborder":32,"hport":768,"hspeed":-1,"hview":768,"inherit":false,"objectId":null,"vborder":32,"visible":false,"vspeed":-1,"wport":1366,"wview":1366,"xport":0,"xview":0,"yport":0,"yview":0,},
     {"hborder":32,"hport":768,"hspeed":-1,"hview":768,"inherit":false,"objectId":null,"vborder":32,"visible":false,"vspeed":-1,"wport":1366,"wview":1366,"xport":0,"xview":0,"yport":0,"yview":0,},
     {"hborder":32,"hport":768,"hspeed":-1,"hview":768,"inherit":false,"objectId":null,"vborder":32,"visible":false,"vspeed":-1,"wport":1366,"wview":1366,"xport":0,"xview":0,"yport":0,"yview":0,},
