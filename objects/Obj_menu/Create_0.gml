@@ -2,19 +2,19 @@
 // CONFIGURAÇÃO
 // ==========================================
 
-parallax_largura = 928;
+parallax_largura = 1280;
 
 // Câmera
 camera_id = view_camera[0];
 
 camera_inicio_y = 0;
-camera_fim_y = 793;
+camera_fim_y = 720;
 
 camera_y = camera_inicio_y;
 vel_camera = 2;
 
 // Altura onde começa a segunda área
-altura_cena = 793;
+altura_cena = 720;
 
 
 // ==========================================

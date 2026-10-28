@@ -32,8 +32,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Sprites",
-    "path":"folders/Sprites.yy",
+    "name":"Spr_Lyra",
+    "path":"folders/Sprites/Spr_Lyra.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
