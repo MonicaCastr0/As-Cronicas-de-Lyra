@@ -33,8 +33,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Player",
-    "path":"folders/Sprites/Player.yy",
+    "name":"Spr_Lyra",
+    "path":"folders/Sprites/Spr_Lyra.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
