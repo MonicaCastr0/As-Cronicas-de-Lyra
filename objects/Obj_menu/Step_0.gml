@@ -38,19 +38,18 @@ if (x_11 >= parallax_largura) x_11 -= parallax_largura;
 // MOVIMENTO DA CÂMERA
 // ==========================================
 
-// ==========================================
-// MOVIMENTO DA CÂMERA
-// ==========================================
-
-camera_y += vel_camera;
-
-if (camera_y >= camera_fim_y)
+if (camera_y < camera_fim_y)
 {
-    camera_y = camera_fim_y;
-}
+    camera_y += vel_camera;
 
-camera_set_view_pos(
-    camera_id,
-    0,
-    camera_y
-);
+    if (camera_y > camera_fim_y)
+    {
+        camera_y = camera_fim_y;
+    }
+
+    camera_set_view_pos(
+        camera_id,
+        0,
+        camera_y
+    );
+}
