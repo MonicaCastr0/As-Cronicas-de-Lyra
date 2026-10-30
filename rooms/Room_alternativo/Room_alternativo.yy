@@ -75,6 +75,7 @@
     {"name":"inst_57DD1C5E","path":"rooms/Room_alternativo/Room_alternativo.yy",},
     {"name":"inst_1EFB7421","path":"rooms/Room_alternativo/Room_alternativo.yy",},
     {"name":"inst_3ACDF7E7","path":"rooms/Room_alternativo/Room_alternativo.yy",},
+    {"name":"inst_3476F469","path":"rooms/Room_alternativo/Room_alternativo.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -332,7 +333,7 @@
           2097,-19,0,-8,2014,-27,0,-2,1761,-187,0,-3,1761,-2,0,-2,2097,-19,0,-8,2014,-27,0,-2,1761,-187,0,-3,1761,
           -58,0,-2,1761,-187,0,-3,1761,-58,0,-2,1761,-187,0,-3,1761,-58,0,-2,1761,-187,0,-63,1761,-187,0,-63,1761,
           -187,0,-3,1761,-58,0,1,1761,-11106,0,
-        ],"TileDataFormat":1,},"tilesetId":{"name":"Tile_jardim3","path":"tilesets/Tile_jardim3/Tile_jardim3.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
+        ],"TileDataFormat":1,},"tilesetId":{"name":"Tile_jardim3","path":"tilesets/Tile_jardim3/Tile_jardim3.yy",},"userdefinedDepth":false,"visible":false,"x":0,"y":0,},
     {"$GMRTileLayer":"","%Name":"Tiles_biblioteca_cima","depth":-5200,"effectEnabled":true,"effectType":"_filter_colour_balance","gridX":32,"gridY":32,"hierarchyFrozen":true,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Tiles_biblioteca_cima","properties":[
         {"name":"g_ColourBalanceShadows","type":0,"value":"0",},
         {"name":"g_ColourBalanceShadows","type":0,"value":"0.1",},
@@ -681,6 +682,7 @@
         {"$GMRInstance":"v4","%Name":"inst_57DD1C5E","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_57DD1C5E","objectId":{"name":"Obj_jarro1","path":"objects/Obj_jarro1/Obj_jarro1.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1568.0,"y":2912.0,},
         {"$GMRInstance":"v4","%Name":"inst_1EFB7421","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_1EFB7421","objectId":{"name":"Obj_terminal","path":"objects/Obj_terminal/Obj_terminal.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1856.0,"y":2048.0,},
         {"$GMRInstance":"v4","%Name":"inst_3ACDF7E7","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3ACDF7E7","objectId":{"name":"Obj_desafio_if_1","path":"objects/Obj_desafio_if_1/Obj_desafio_if_1.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1888.0,"y":2048.0,},
+        {"$GMRInstance":"v4","%Name":"inst_3476F469","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3476F469","objectId":{"name":"Obj_player","path":"objects/Obj_player/Obj_player.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1792.0,"y":2272.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRTileLayer":"","%Name":"Tiles_Jardim2","depth":300,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Tiles_Jardim2","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":250,"SerialiseWidth":250,"TileCompressedData":[
           -8800,-2147483648,-27,0,-223,-2147483648,-27,0,-223,-2147483648,-27,0,-223,-2147483648,-27,0,-223,-2147483648,
