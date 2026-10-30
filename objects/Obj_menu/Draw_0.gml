@@ -4,21 +4,12 @@
 
 
 // CAMADA 11 - FUNDO
-draw_sprite_part_ext(
+draw_sprite(spr_menu_bg_11, 0, x_11, 720 + sprite_get_height(spr_menu_bg_11) / 2);
+draw_sprite(
     spr_menu_bg_11,
     0,
-
-    0, 200,
-    928, 593,
-
-    x_11,
-    altura_cena,
-
-    928,
-    593,
-
-    c_white,
-    1
+    x_11 - parallax_largura,
+    720 + sprite_get_height(spr_menu_bg_11) / 2
 );
 
 

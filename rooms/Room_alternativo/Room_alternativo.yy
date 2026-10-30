@@ -6,8 +6,6 @@
   "inheritCreationOrder":false,
   "inheritLayers":false,
   "instanceCreationOrder":[
-    {"name":"inst_414715AC","path":"rooms/Room_alternativo/Room_alternativo.yy",},
-    {"name":"inst_68BA6D49","path":"rooms/Room_alternativo/Room_alternativo.yy",},
     {"name":"inst_3906803D","path":"rooms/Room_alternativo/Room_alternativo.yy",},
     {"name":"inst_3654D523","path":"rooms/Room_alternativo/Room_alternativo.yy",},
     {"name":"inst_45768B2C","path":"rooms/Room_alternativo/Room_alternativo.yy",},
@@ -75,6 +73,8 @@
     {"name":"inst_3A520EA1","path":"rooms/Room_alternativo/Room_alternativo.yy",},
     {"name":"inst_338785D2","path":"rooms/Room_alternativo/Room_alternativo.yy",},
     {"name":"inst_57DD1C5E","path":"rooms/Room_alternativo/Room_alternativo.yy",},
+    {"name":"inst_1EFB7421","path":"rooms/Room_alternativo/Room_alternativo.yy",},
+    {"name":"inst_3ACDF7E7","path":"rooms/Room_alternativo/Room_alternativo.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -613,8 +613,6 @@
           0,
         ],"TileDataFormat":1,},"tilesetId":{"name":"Tile_jardim3","path":"tilesets/Tile_jardim3/Tile_jardim3.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
     {"$GMRInstanceLayer":"","%Name":"Instances","depth":200,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
-        {"$GMRInstance":"v4","%Name":"inst_414715AC","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_414715AC","objectId":{"name":"Obj_terminal","path":"objects/Obj_terminal/Obj_terminal.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.43160075,"scaleX":1.5000002,"scaleY":1.5000002,"x":1824.3616,"y":2063.9988,},
-        {"$GMRInstance":"v4","%Name":"inst_68BA6D49","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_68BA6D49","objectId":{"name":"Obj_desafio_if","path":"objects/Obj_desafio_if/Obj_desafio_if.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1824.0,"y":2048.0,},
         {"$GMRInstance":"v4","%Name":"inst_3654D523","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3654D523","objectId":{"name":"Obj_arbusto2","path":"objects/Obj_arbusto2/Obj_arbusto2.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1856.0,"y":1792.0,},
         {"$GMRInstance":"v4","%Name":"inst_45768B2C","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_45768B2C","objectId":{"name":"Obj_arbusto1","path":"objects/Obj_arbusto1/Obj_arbusto1.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":2016.0,"y":1792.0,},
         {"$GMRInstance":"v4","%Name":"inst_780F0C69","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_780F0C69","objectId":{"name":"Obj_mini_arbusto","path":"objects/Obj_mini_arbusto/Obj_mini_arbusto.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1440.0,"y":2080.0,},
@@ -681,6 +679,8 @@
         {"$GMRInstance":"v4","%Name":"inst_3A520EA1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3A520EA1","objectId":{"name":"Obj_jarro1","path":"objects/Obj_jarro1/Obj_jarro1.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":2912.0,"y":1472.0,},
         {"$GMRInstance":"v4","%Name":"inst_338785D2","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_338785D2","objectId":{"name":"Obj_jarro2","path":"objects/Obj_jarro2/Obj_jarro2.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":3104.0,"y":1824.0,},
         {"$GMRInstance":"v4","%Name":"inst_57DD1C5E","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_57DD1C5E","objectId":{"name":"Obj_jarro1","path":"objects/Obj_jarro1/Obj_jarro1.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1568.0,"y":2912.0,},
+        {"$GMRInstance":"v4","%Name":"inst_1EFB7421","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_1EFB7421","objectId":{"name":"Obj_terminal","path":"objects/Obj_terminal/Obj_terminal.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1856.0,"y":2048.0,},
+        {"$GMRInstance":"v4","%Name":"inst_3ACDF7E7","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3ACDF7E7","objectId":{"name":"Obj_desafio_if_1","path":"objects/Obj_desafio_if_1/Obj_desafio_if_1.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1888.0,"y":2048.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRTileLayer":"","%Name":"Tiles_Jardim2","depth":300,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Tiles_Jardim2","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":250,"SerialiseWidth":250,"TileCompressedData":[
           -8800,-2147483648,-27,0,-223,-2147483648,-27,0,-223,-2147483648,-27,0,-223,-2147483648,-27,0,-223,-2147483648,
