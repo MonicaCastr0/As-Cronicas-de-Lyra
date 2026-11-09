@@ -13,6 +13,12 @@ var correndo = andando && keyboard_check(vk_shift);
 // Velocidade
 var vel = correndo ? velocidade_correr : velocidade_andar;
 
+if (keyboard_check_pressed(ord("B")) && !global.chefe_aberto)
+{
+    global.chefe_aberto = true;
+    pode_mover = false;
+}
+
 // Movimento horizontal com colisão
 if (h != 0)
 {
@@ -88,8 +94,16 @@ else
 }
 
 // Câmera (por último, depois de mover)
+var cam = view_camera[0];
+var cam_w = camera_get_view_width(cam);
+var cam_h = camera_get_view_height(cam);
+
+// centro real do sprite (não depende da origem do sprite)
+var cx = (bbox_left + bbox_right) / 2;
+var cy = (bbox_top + bbox_bottom) / 2;
+
 camera_set_view_pos(
-    camera,
-    x - camera_get_view_width(camera) / 2,
-    y - camera_get_view_height(camera) / 2
+    cam,
+    clamp(cx - cam_w / 2, 0, max(0, room_width - cam_w)),
+    clamp(cy - cam_h / 2, 0, max(0, room_height - cam_h))
 );
