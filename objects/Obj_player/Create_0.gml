@@ -1,5 +1,6 @@
 velocidade_andar = 2;
 velocidade_correr = 4;
+pode_mover = true;
 
 direcao = "down";
 tilemap_parede = layer_tilemap_get_id("Tiles_col");
