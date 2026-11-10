@@ -258,3 +258,11 @@ atualizar_config = function()
         }
     }
 }
+
+if (variable_global_exists("pular_abertura") && global.pular_abertura)
+{
+    global.pular_abertura = false;
+    estado = 2;
+    camera_y = camera_fim_y;
+    patro_alpha = 0;
+}

@@ -11,8 +11,8 @@
   "name":"Obj_config",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objetos",
-    "path":"folders/Objetos.yy",
+    "name":"Mecânicas",
+    "path":"folders/Objetos/Mecânicas.yy",
   },
   "parentObjectId":null,
   "persistent":true,

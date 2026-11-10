@@ -13,11 +13,13 @@ var correndo = andando && keyboard_check(vk_shift);
 // Velocidade
 var vel = correndo ? velocidade_correr : velocidade_andar;
 
-if (keyboard_check_pressed(ord("B")) && !global.chefe_aberto)
+if (keyboard_check_pressed(ord("B")) && !global.chefe_aberto && !global.pausado)
 {
     global.chefe_aberto = true;
+	
     pode_mover = false;
 }
+
 
 // Movimento horizontal com colisão
 if (h != 0)

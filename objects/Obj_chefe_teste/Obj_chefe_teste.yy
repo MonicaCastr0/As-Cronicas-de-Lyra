@@ -10,8 +10,8 @@
   "name":"Obj_chefe_teste",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objetos",
-    "path":"folders/Objetos.yy",
+    "name":"Mecânicas",
+    "path":"folders/Objetos/Mecânicas.yy",
   },
   "parentObjectId":null,
   "persistent":false,
