@@ -1,5 +1,5 @@
 // ==========================================================
-// DRAW GUI - Desafio do Jardim (VERSAO DIFICIL)
+// DRAW GUI - Desafio do Jardim 
 // ==========================================================
 if (!global.desafio_plantar_aberto) exit;
 

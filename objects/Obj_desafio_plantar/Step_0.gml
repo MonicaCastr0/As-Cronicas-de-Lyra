@@ -1,5 +1,5 @@
 // ==========================================================
-// ETAPA (Step)  -  Desafio do Jardim (VERSAO DIFICIL)
+// ETAPA (Step)  -  Desafio do Jardim 
 // ==========================================================
 if (!global.desafio_plantar_aberto) exit;
 

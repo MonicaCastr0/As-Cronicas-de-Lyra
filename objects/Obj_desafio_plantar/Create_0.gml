@@ -1,5 +1,5 @@
 // ==========================================================
-// CRIAR - Desafio do Jardim (VERSAO DIFICIL)
+// CRIAR - Desafio do Jardim 
 // ==========================================================
 
 // estado: 0 = montando | 1 = errou | 2 = acertou a fase | 3 = tudo concluido | 4 = executando
