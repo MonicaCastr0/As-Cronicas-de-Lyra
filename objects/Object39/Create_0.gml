@@ -1,0 +1,1 @@
+distancia_interacao = 80;
