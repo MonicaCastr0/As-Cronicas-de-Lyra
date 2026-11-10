@@ -10,6 +10,8 @@ if (instance_number(Obj_config) > 1)
     instance_destroy();
     exit;
 }
+if (!variable_global_exists("pausado")) global.pausado = false;
+if (!instance_exists(Obj_pausa)) instance_create_depth(0, 0, 0, Obj_pausa);
 
 // ---------- Tamanho base do jogo (nao mude no meio do jogo) ----------
 base_w = 1280;
