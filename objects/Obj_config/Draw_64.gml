@@ -1,5 +1,6 @@
    if (!mostrar_debug) exit;
 
+
    var d = diagnostico();
    draw_set_alpha(0.75);
    draw_set_color(c_black);

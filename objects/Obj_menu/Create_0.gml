@@ -119,7 +119,7 @@ escolher_opcao = function(i)
 {
     if (i == 0)
     {
-        if (sala_jogo != -1) room_goto(sala_jogo);
+        if (sala_jogo != -1) room_goto(Room_intro);
         else mostrar_aviso("DEFINA A sala_jogo NO CREATE");
     }
     else if (i == 1)
