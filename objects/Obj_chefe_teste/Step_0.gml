@@ -1,5 +1,5 @@
 // ==========================================================
-// ETAPA (Step)  -  Desafio Final: NULLERROR  v2
+// ETAPA (Step)  -  Desafio Final: NULLERROR  v2 + quebra final
 // ==========================================================
 if (!global.chefe_aberto)
 {
@@ -24,8 +24,8 @@ var clicou = mouse_check_button_pressed(mb_left);
 
 atualizar_exec();
 
-// ---------- ESC ----------
-if (keyboard_check_pressed(vk_escape))
+// ---------- ESC (nao sai durante a quebra final) ----------
+if (keyboard_check_pressed(vk_escape) && etapa < 5)
 {
     fechar_chefe();
     exit;
@@ -41,13 +41,10 @@ if (em_dialogo)
     exit;
 }
 
-// ---------- Vitoria ----------
+// ---------- Final: quebra da janela, dialogo e teleporte ----------
 if (etapa == 5)
 {
-    if ((clicou && mouse_em(rect_executar(L), mx, my)) || keyboard_check_pressed(vk_enter))
-    {
-        fechar_chefe();
-    }
+    atualizar_final(clicou);
     exit;
 }
 

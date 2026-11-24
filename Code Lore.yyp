@@ -34,7 +34,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2026.0.0.16",
+    "IDEVersion":"2026.1.0.27",
   },
   "name":"Code Lore",
   "resources":[
@@ -194,10 +194,16 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
+<<<<<<< HEAD
+    {"roomId":{"name":"Room2","path":"rooms/Room2/Room2.yy",},},
+    {"roomId":{"name":"Room_menu","path":"rooms/Room_menu/Room_menu.yy",},},
+    {"roomId":{"name":"Room_alternativo","path":"rooms/Room_alternativo/Room_alternativo.yy",},},
+=======
     {"roomId":{"name":"Room_alternativo","path":"rooms/Room_alternativo/Room_alternativo.yy",},},
     {"roomId":{"name":"Room_menu","path":"rooms/Room_menu/Room_menu.yy",},},
     {"roomId":{"name":"Room_intro","path":"rooms/Room_intro/Room_intro.yy",},},
     {"roomId":{"name":"Room2","path":"rooms/Room2/Room2.yy",},},
+>>>>>>> origin/main
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
   ],
   "templateType":"game",
