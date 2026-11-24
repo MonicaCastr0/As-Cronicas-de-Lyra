@@ -1,6 +1,7 @@
 // ==========================================================
 // ETAPA (Step)  -  Desafio do Jardim 
 // ==========================================================
+// Detecta o momento em que o desafio foi fechado
 if (!global.desafio_plantar_aberto) exit;
 
 anim++;
@@ -94,4 +95,5 @@ if (estado == 0 || estado == 1)
 if (keyboard_check_pressed(vk_escape))
 {
     fechar_desafio();
+	
 }

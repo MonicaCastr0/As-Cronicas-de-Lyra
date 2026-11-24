@@ -341,7 +341,7 @@ if (msg != "")
 else if (estado == 4)
 {
     draw_set_color(cor_ciano);
-    draw_text_ext(L.esq + 30, L.topo + 562, "O jardineiro esta trabalhando, um passo de cada vez...", 17, 610);
+    draw_text_ext(L.esq + 30, L.topo + 562, "Lyra esta trabalhando, um passo de cada vez...", 17, 610);
 }
 else
 {

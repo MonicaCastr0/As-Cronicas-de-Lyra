@@ -19,6 +19,7 @@ exec_timer = 0;
 exec_delay = 40;
 entrada_bloqueada = 0;
 
+
 plots = [];
 plot_atual = 0;
 robo_pos = 0;
@@ -31,6 +32,8 @@ luz_ligada  = false;   // luz do jardim (acende todos os canteiros)
 if (!variable_global_exists("desafio_plantar_aberto"))    global.desafio_plantar_aberto = false;
 if (!variable_global_exists("desafio_plantar_concluido")) global.desafio_plantar_concluido = false;
 if (!variable_global_exists("jardim_florido"))            global.jardim_florido = false;
+if (!variable_global_exists("jardim_dialogo_final"))      global.jardim_dialogo_final = false;
+if (!variable_global_exists("tem_foice"))                 global.tem_foice = false;
 
 // ---------- Cores ----------
 cor_fundo       = make_color_rgb(8, 12, 18);
@@ -268,7 +271,7 @@ processar_execucao = function()
         erros_total++;
         shake = 14;
         if (erros_fase >= 3) mostrar_dica = true;
-        msg = nome_passo + ": " + erro + "\nO jardineiro parou. Mude a sequencia e tente de novo.";
+        msg = nome_passo + ": " + erro + "\nA Lyra parou. Mude a sequencia e tente de novo.";
         return;
     }
 
@@ -388,6 +391,16 @@ acao_botao = function()
         fechar_desafio();
     }
 }
+
+abrir = function()
+{
+    if (global.desafio_plantar_concluido) estado = 3;
+    global.desafio_plantar_aberto = true;
+    Obj_player.pode_mover = false;
+    entrada_bloqueada = 10;
+}
+
+
 
 abrir = function()
 {
