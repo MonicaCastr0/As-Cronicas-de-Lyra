@@ -1,5 +1,5 @@
 // ==========================================================
-// DRAW GUI  -  Desafio Final: NULLERROR  v2
+// DRAW GUI  -  Desafio Final: NULLERROR  v3 (janela maior, roxa, em 3 passos)
 // (use o evento "Draw GUI", pois tudo usa coordenadas da GUI)
 // ==========================================================
 if (!global.chefe_aberto) exit;
@@ -11,6 +11,13 @@ var my = device_mouse_y_to_gui(0);
 var montando = (etapa == 1 || etapa == 2 || etapa == 4);
 var chefe_na_tela = (etapa >= 3);
 
+// ---------- Final: janela ja quebrou (estilhacos + dialogo grande) ----------
+if (etapa == 5 && q_fase >= 1)
+{
+    desenhar_final(L);
+    exit;
+}
+
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 draw_set_alpha(1);
@@ -21,11 +28,18 @@ draw_set_color(c_black);
 draw_rectangle(0, 0, L.largura, L.altura, false);
 draw_set_alpha(1);
 
-// ---------- Janela ----------
+// ---------- Janela (fundo roxo) ----------
 draw_rectangle_color(L.esq, L.topo, L.dir, L.baixo,
-    cor_painel, cor_painel, cor_fundo, cor_fundo, false);
+    cor_janela_topo, cor_janela_topo, cor_janela_base, cor_janela_base, false);
 
-draw_set_alpha(0.05);
+// brilho roxo no centro
+draw_set_alpha(0.10 + 0.03 * sin(anim * 0.04));
+draw_set_color(cor_roxo_claro);
+draw_circle(L.cx, L.topo + 120, 300, false);
+draw_set_alpha(1);
+
+// linhas de varredura
+draw_set_alpha(0.06);
 draw_set_color(c_white);
 for (var yy = L.topo; yy < L.baixo; yy += 6)
 {
@@ -41,7 +55,7 @@ draw_set_alpha(1);
 draw_rectangle(L.esq, L.topo, L.dir, L.baixo, true);
 
 // ==========================================================
-// CABECALHO (simples)
+// CABECALHO
 // ==========================================================
 var rotulos = ["INTRODUCAO", "TREINO 1/2  -  NA MAO", "TREINO 2/2  -  REPETIR", "CHEFE  -  OBSERVE", "CHEFE  -  NULLERROR", "VITORIA"];
 
@@ -59,19 +73,19 @@ draw_line(L.esq + 20, L.topo + 44, L.dir - 20, L.topo + 44);
 // ==========================================================
 // ARENA
 // ==========================================================
-painel(L.esq + 30, L.topo + 52, L.dir - 30, L.topo + 250, "", cor_null);
+painel(L.esq + 30, L.topo + 52, L.dir - 30, L.topo + 240, "", cor_null);
 
-var gy  = L.topo + 232;
-var lxp = L.esq + 190;
-var bx  = L.esq + 690;
+var gy  = L.topo + 222;
+var lxp = L.esq + 220;
+var bx  = L.dir - 250;
 var prog  = clamp(exec_timer / exec_dur, 0, 0.999);
 var golpe = sin(prog * pi);
 var bob = sin(anim * 0.08) * 3;
 
 var lyra_x = lxp;
 var boss_x = bx;
-if (chefe_na_tela && exec_lyra_atual == "ATAQUE")   lyra_x += golpe * 70;
-if (chefe_na_tela && exec_evento_atual == "ATAQUE") boss_x -= golpe * 70;
+if (chefe_na_tela && exec_lyra_atual == "ATAQUE")   lyra_x += golpe * 80;
+if (chefe_na_tela && exec_evento_atual == "ATAQUE") boss_x -= golpe * 80;
 
 // ---------- contador (canto esquerdo) ----------
 draw_set_color(cor_amarelo);
@@ -93,7 +107,6 @@ draw_set_alpha(1);
 var acao_lyra = (exec_ativo) ? exec_lyra_atual : "";
 desenhar_lyra(lyra_x, gy, acao_lyra, prog);
 
-// efeitos quando nao ha sprite proprio para a acao
 if (acao_lyra == "DEFESA" && spr_player_combat == -1)
 {
     draw_set_alpha(0.35);
@@ -118,15 +131,16 @@ if (exec_resultado == "erro" && exec_evento_atual == "ATAQUE" && exec_timer > 0 
 // cartao com a acao que a Lyra esta fazendo
 if (exec_ativo && exec_lyra_atual != "")
 {
-    desenhar_card(lxp, L.topo + 62, 130, 26, nome_acao(exec_lyra_atual), cor_acao(exec_lyra_atual), true);
+    desenhar_card(lxp, L.topo + 62, 150, 28, nome_acao(exec_lyra_atual), cor_acao(exec_lyra_atual), true);
 }
 
 // ---------- Tochas (treinos) ----------
 if (!chefe_na_tela)
 {
+    var area_t = (L.dir - 90) - (L.esq + 520);
     for (var k = 0; k < tochas_total; k++)
     {
-        var tx = L.esq + 480 + (k + 0.5) * (360 / tochas_total);
+        var tx = L.esq + 520 + (k + 0.5) * (area_t / tochas_total);
         var acesa = (k < tochas_acesas);
 
         draw_set_color(cor_linha);
@@ -194,18 +208,18 @@ if (chefe_na_tela)
     for (var i = 0; i < 3; i++)
     {
         var dest = (exec_ativo && exec_passo == i && exec_evento_atual != "");
-        desenhar_card(bx + (i - 1) * 92, L.topo + 62, 84, 26, padrao_boss[i], cor_acao(padrao_boss[i]), dest);
+        desenhar_card(bx + (i - 1) * 118, L.topo + 62, 110, 28, padrao_boss[i], cor_acao(padrao_boss[i]), dest);
     }
 
     draw_set_color(cor_normal);
-    draw_rectangle(bx - 100, L.topo + 98, bx + 100, L.topo + 108, false);
+    draw_rectangle(bx - 130, L.topo + 98, bx + 130, L.topo + 110, false);
     draw_set_color(cor_null);
-    draw_rectangle(bx - 100, L.topo + 98, bx - 100 + 200 * (corrupcao / 100), L.topo + 108, false);
+    draw_rectangle(bx - 130, L.topo + 98, bx - 130 + 260 * (corrupcao / 100), L.topo + 110, false);
     draw_set_color(cor_linha);
-    draw_rectangle(bx - 100, L.topo + 98, bx + 100, L.topo + 108, true);
+    draw_rectangle(bx - 130, L.topo + 98, bx + 130, L.topo + 110, true);
 }
 
-// ---------- resultado do passo (curto, no centro da arena) ----------
+// ---------- resultado do passo (centro da arena) ----------
 if (exec_ativo && exec_resultado != "" && exec_timer > 0)
 {
     var rt = "";
@@ -229,16 +243,44 @@ if (exec_ativo && exec_resultado != "" && exec_timer > 0)
     }
     draw_set_halign(fa_center);
     draw_set_color(rc);
-    draw_text(L.esq + 450, L.topo + 66, rt);
+    draw_text_transformed(L.cx, L.topo + 120, rt, 1.4, 1.4, 0);
     draw_set_halign(fa_left);
 }
 
 // ==========================================================
-// MONTAGEM (esquerda)
+// FAIXA "O QUE FAZER"  (instrucao ou erro, bem visivel)
 // ==========================================================
-painel(L.esq + 30, L.topo + 262, L.esq + 524, L.topo + 470, usa_loop ? "MONTE A REGRA" : "MONTE A SEQUENCIA", cor_verde);
+var texto_msg = (msg != "") ? msg : instrucao;
+var cor_faixa = (msg != "") ? msg_cor : cor_roxo_claro;
 
-// ---------- acoes disponiveis ----------
+draw_set_color(cor_painel);
+draw_roundrect_ext(L.esq + 30, L.topo + 248, L.dir - 30, L.topo + 284, 8, 8, false);
+draw_set_color(cor_faixa);
+draw_rectangle(L.esq + 30, L.topo + 248, L.esq + 36, L.topo + 284, false);
+draw_roundrect_ext(L.esq + 30, L.topo + 248, L.dir - 30, L.topo + 284, 8, 8, true);
+
+draw_set_valign(fa_middle);
+draw_set_color(cor_faixa);
+draw_text(L.esq + 52, L.topo + 266, (msg != "") ? "ATENCAO:" : "O QUE FAZER:");
+draw_set_color(c_white);
+draw_text_ext(L.esq + 190, L.topo + 266, texto_msg, 16, L.jw - 250);
+draw_set_valign(fa_top);
+
+// ==========================================================
+// 3 PASSOS:  1 escolher  ->  2 montar  ->  3 codigo
+// ==========================================================
+var cy0 = L.topo + 292;
+var cy1 = L.baixo - 84;
+var colA1 = L.esq + 30;
+var colA2 = L.esq + 330;
+var colB1 = L.esq + 360;
+var colB2 = L.esq + 720;
+var colC1 = L.esq + 750;
+var colC2 = L.dir - 30;
+
+// ---------- PASSO 1: acoes disponiveis ----------
+painel(colA1, cy0, colA2, cy1, "1   ESCOLHA UMA ACAO", cor_laranja);
+
 if (!montando) draw_set_alpha(0.35);
 for (var i = 0; i < array_length(acoes_atuais); i++)
 {
@@ -250,23 +292,43 @@ for (var i = 0; i < array_length(acoes_atuais); i++)
     draw_roundrect_ext(rp[0], rp[1], rp[2], rp[3], 8, 8, false);
     draw_set_color(ca);
     draw_roundrect_ext(rp[0], rp[1], rp[2], rp[3], 8, 8, true);
+    draw_rectangle(rp[0] + 4, rp[1] + 6, rp[0] + 9, rp[3] - 6, false);
 
+    // tecla de atalho
+    draw_set_color(cor_painel);
+    draw_roundrect_ext(rp[0] + 18, rp[1] + 12, rp[0] + 44, rp[3] - 12, 5, 5, false);
+    draw_set_color(ca);
+    draw_roundrect_ext(rp[0] + 18, rp[1] + 12, rp[0] + 44, rp[3] - 12, 5, 5, true);
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
     draw_set_color(c_white);
-    draw_text((rp[0] + rp[2]) / 2, (rp[1] + rp[3]) / 2, nome_acao(acoes_atuais[i]));
+    draw_text(rp[0] + 31, (rp[1] + rp[3]) / 2, string(i + 1));
+
+    draw_text((rp[0] + 56 + rp[2]) / 2, (rp[1] + rp[3]) / 2, nome_acao(acoes_atuais[i]));
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
 }
+draw_set_alpha(1);
 
-// ---------- REPETIR [-] n [+] VEZES ----------
+draw_set_color(cor_cinza);
+draw_text(colA1 + 18, cy1 - 24, "Clique ou use as teclas 1, 2, 3");
+
+// seta A -> B
+draw_set_color(cor_roxo_claro);
+draw_triangle(colA2 + 6, (cy0 + cy1) / 2 - 12, colA2 + 6, (cy0 + cy1) / 2 + 12, colA2 + 24, (cy0 + cy1) / 2, false);
+
+// ---------- PASSO 2: sequencia ----------
+painel(colB1, cy0, colB2, cy1, usa_loop ? "2   MONTE A REGRA" : "2   COLOQUE NA SEQUENCIA", cor_verde);
+
 if (usa_loop)
 {
     var rm  = rect_menos(L);
     var rpl = rect_mais(L);
 
     draw_set_color(cor_amarelo);
-    draw_text(L.esq + 44, L.topo + 353, "REPETIR");
+    draw_set_valign(fa_middle);
+    draw_text(colB1 + 20, (rm[1] + rm[3]) / 2, "REPETIR");
+    draw_set_valign(fa_top);
     desenhar_botao(rm,  "-", montando && !exec_ativo, mx, my, cor_normal, cor_hover);
     desenhar_botao(rpl, "+", montando && !exec_ativo, mx, my, cor_normal, cor_hover);
 
@@ -275,18 +337,12 @@ if (usa_loop)
     draw_set_color(c_white);
     draw_text((rm[2] + rpl[0]) / 2, (rm[1] + rm[3]) / 2, string(repeticoes));
     draw_set_halign(fa_left);
+    draw_text(rpl[2] + 14, (rm[1] + rm[3]) / 2, "VEZES");
     draw_set_valign(fa_top);
-
-    draw_set_color(cor_amarelo);
-    draw_text(L.esq + 256, L.topo + 353, "VEZES");
-
-    // colchete lateral: o que esta "dentro" do REPETIR
-    draw_line_width(L.esq + 36, L.topo + 346, L.esq + 36, L.topo + 442, 2);
-    draw_line_width(L.esq + 36, L.topo + 346, L.esq + 41, L.topo + 346, 2);
-    draw_line_width(L.esq + 36, L.topo + 442, L.esq + 41, L.topo + 442, 2);
 }
 
-// ---------- espacos da sequencia ----------
+var proximo = array_length(sequencia);   // proximo espaco vazio (pisca)
+if (!montando) draw_set_alpha(0.55);
 for (var i = 0; i < tam_seq; i++)
 {
     var rs = rect_slot(L, i);
@@ -299,34 +355,63 @@ for (var i = 0; i < tam_seq; i++)
     draw_set_color(cs);
     draw_roundrect_ext(rs[0], rs[1], rs[2], rs[3], 8, 8, true);
 
+    // proximo espaco a preencher
+    if (montando && !exec_ativo && i == proximo)
+    {
+        draw_set_alpha(0.5 + 0.5 * abs(sin(anim * 0.08)));
+        draw_set_color(cor_amarelo);
+        draw_roundrect_ext(rs[0] - 2, rs[1] - 2, rs[2] + 2, rs[3] + 2, 8, 8, true);
+        draw_set_alpha(montando ? 1 : 0.55);
+    }
+
+    // passo em execucao
     if (exec_ativo && exec_modo == "run" && exec_passo == i)
     {
         draw_set_color(cor_amarelo);
         draw_roundrect_ext(rs[0] - 2, rs[1] - 2, rs[2] + 2, rs[3] + 2, 8, 8, true);
     }
 
-    draw_set_halign(fa_center);
+    // rotulo do passo
+    draw_set_color(cor_painel);
+    draw_roundrect_ext(rs[0] + 8, rs[1] + 8, rs[0] + 74, rs[3] - 8, 5, 5, false);
+    draw_set_color(cor_cinza);
     draw_set_valign(fa_middle);
-    draw_set_color(cheio ? c_white : cor_linha);
-    draw_text((rs[0] + rs[2]) / 2, (rs[1] + rs[3]) / 2, cheio ? nome_acao(sequencia[i]) : "?");
+    draw_text(rs[0] + 14, (rs[1] + rs[3]) / 2, "PASSO " + string(i + 1));
+
+    draw_set_halign(fa_center);
+    draw_set_color(cheio ? c_white : cor_cinza);
+    draw_text((rs[0] + 82 + rs[2]) / 2, (rs[1] + rs[3]) / 2,
+        cheio ? nome_acao(sequencia[i]) : (i == proximo && montando ? "<  escolha uma acao" : "vazio"));
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
 }
 draw_set_alpha(1);
 
-// ==========================================================
-// CODIGO (direita)
-// ==========================================================
-painel(L.esq + 540, L.topo + 262, L.dir - 30, L.topo + 470, "CODIGO", cor_ciano);
+if (usa_loop)
+{
+    // colchete: o que esta "dentro" do REPETIR
+    var ra = rect_slot(L, 0);
+    var rb = rect_slot(L, tam_seq - 1);
+    draw_set_color(cor_amarelo);
+    draw_line_width(ra[0] - 8, ra[1], ra[0] - 8, rb[3], 2);
+    draw_line_width(ra[0] - 8, ra[1], ra[0] - 3, ra[1], 2);
+    draw_line_width(ra[0] - 8, rb[3], ra[0] - 3, rb[3], 2);
+}
+
+// seta B -> C
+draw_set_color(cor_roxo_claro);
+draw_triangle(colB2 + 6, (cy0 + cy1) / 2 - 12, colB2 + 6, (cy0 + cy1) / 2 + 12, colB2 + 24, (cy0 + cy1) / 2, false);
+
+// ---------- PASSO 3: codigo ----------
+painel(colC1, cy0, colC2, cy1, "3   CODIGO RESULTANTE", cor_ciano);
 var linhas = montar_codigo();
-desenhar_codigo(L.esq + 556, L.topo + 300, linhas, codigo_destaque, 300);
+desenhar_codigo(colC1 + 18, cy0 + 44, linhas, codigo_destaque, colC2 - colC1 - 36);
 
 // ==========================================================
-// MENSAGEM + BOTOES
+// BOTOES
 // ==========================================================
-var texto_msg = (msg != "") ? msg : instrucao;
-draw_set_color((msg != "") ? msg_cor : cor_cinza);
-draw_text_ext(L.esq + 30, L.topo + 484, texto_msg, 18, 460);
+draw_set_color(cor_cinza);
+draw_text(L.esq + 34, L.baixo - 58, "Apagar: BACKSPACE   |   Executar: ENTER");
 
 if (montando)
 {
@@ -336,33 +421,11 @@ if (montando)
 }
 
 // ==========================================================
-// VITORIA
+// FINAL (rachaduras por cima da janela)
 // ==========================================================
 if (etapa == 5)
 {
-    draw_set_alpha(0.93);
-    draw_set_color(c_black);
-    draw_rectangle(L.esq + 2, L.topo + 46, L.dir - 2, L.baixo - 80, false);
-    draw_set_alpha(1);
-
-    draw_set_halign(fa_center);
-    draw_set_valign(fa_middle);
-    draw_set_color(cor_verde);
-    draw_text_transformed(L.cx, L.topo + 95, "NULLERROR DERROTADO", 2, 2, 0);
-    draw_set_halign(fa_left);
-    draw_set_valign(fa_top);
-
-    painel(L.cx - 230, L.topo + 140, L.cx + 230, L.topo + 290, "O LOOP QUE VOCE ESCREVEU", cor_verde);
-    desenhar_codigo(L.cx - 210, L.topo + 178, montar_codigo(), -1, 420);
-
-    draw_set_halign(fa_center);
-    draw_set_color(cor_amarelo);
-    draw_text(L.cx, L.topo + 316, "Uma estrutura REPETIR no lugar de escrever tudo varias vezes.");
-    draw_set_color(cor_ciano);
-    draw_text_ext(L.cx, L.topo + 350, "NullError repetia a corrupcao. Lyra aprendeu a repetir tambem... mas repetindo a reconstrucao.", 20, 700);
-    draw_set_halign(fa_left);
-
-    desenhar_botao(rect_executar(L), "FECHAR", true, mx, my, cor_botao, cor_botao_hover);
+    desenhar_final(L);
 }
 
 // ==========================================================

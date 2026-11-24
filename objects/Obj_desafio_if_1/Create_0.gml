@@ -1,14 +1,17 @@
 // ==========================================================
-// CRIAR  -  Desafio da Porta Eletronica (SE / ENTAO / SENAO)
+// CREATE - Desafio da Porta Eletronica (SE / ENTAO / SENAO)
+// Operacao: Recuperacao do Acesso
 // ==========================================================
 
 // ---------- Dados do sistema (usados nas 3 fases) ----------
-energia         = 78;
-codigo_correto  = "4721";
-codigo_digitado = "4712";
-tentativas      = 1;
-temperatura     = 92;
-limite_seguro   = 80;
+energia             = 78;
+requisito_minimo     = 50;
+codigo_correto      = "4721";
+codigo_digitado     = "4712";
+tentativas          = 1;
+tentativas_limite   = 3;
+temperatura         = 92;
+limite_seguro       = 80;
 
 // ---------- Estado do desafio ----------
 // estado: 0 = montando | 1 = errou | 2 = acertou a fase | 3 = tudo concluido
@@ -17,114 +20,118 @@ estado = 0;
 condicao_selecionada   = -1;
 acao_entao_selecionada = -1;
 acao_senao_selecionada = -1;
-ramo = "";            // "entao" ou "senao" (qual lado foi executado)
+ramo = "";           // "entao" ou "senao" (qual lado foi executado)
 msg = "";
 erros_fase = 0;
 erros_total = 0;
 mostrar_dica = false;
-shake = 0;            // tremor da janela quando erra
+shake = 0;
 anim = 0;
 
 if (!variable_global_exists("porta_aberta"))      global.porta_aberta = false;
 if (!variable_global_exists("desafio_concluido")) global.desafio_concluido = false;
 
-// ---------- Cores ----------
-cor_fundo       = make_color_rgb(8, 12, 18);
-cor_painel      = make_color_rgb(14, 22, 30);
-cor_linha       = make_color_rgb(35, 60, 75);
-cor_normal      = make_color_rgb(24, 38, 48);
-cor_hover       = make_color_rgb(36, 58, 72);
-cor_borda       = make_color_rgb(0, 180, 220);
-cor_ciano       = make_color_rgb(0, 200, 240);
-cor_verde       = make_color_rgb(90, 200, 100);
-cor_laranja     = make_color_rgb(255, 160, 40);
-cor_vermelho    = make_color_rgb(230, 70, 70);
-cor_amarelo     = make_color_rgb(240, 210, 80);
-cor_cinza       = make_color_rgb(130, 150, 160);
-cor_botao       = make_color_rgb(60, 140, 60);
-cor_botao_hover = make_color_rgb(80, 175, 80);
-cor_botao_off   = make_color_rgb(45, 55, 62);
+// ---------- Cores (tema roxo) ----------
+cor_fundo       = make_color_rgb(8, 6, 18);
+cor_painel      = make_color_rgb(22, 15, 37);
+cor_linha       = make_color_rgb(82, 57, 112);
+cor_normal      = make_color_rgb(43, 31, 62);
+cor_hover       = make_color_rgb(72, 49, 100);
+cor_borda       = make_color_rgb(180, 105, 255);
+cor_ciano       = make_color_rgb(205, 155, 255);
+cor_verde       = make_color_rgb(90, 220, 155);
+cor_laranja     = make_color_rgb(185, 125, 255);
+cor_vermelho    = make_color_rgb(255, 95, 115);
+cor_amarelo     = make_color_rgb(235, 205, 255);
+cor_cinza       = make_color_rgb(195, 185, 215);
+cor_texto       = make_color_rgb(225, 215, 240);
+cor_botao       = make_color_rgb(115, 60, 180);
+cor_botao_hover = make_color_rgb(160, 90, 230);
+cor_botao_off   = make_color_rgb(55, 43, 70);
 
 // ---------- Como cada acao aparece no codigo gerado ----------
 codigo_acao = {
-    abrir:    "abrir_porta();",
-    bloquear: "manter_bloqueada();",
-    alarme:   "ativar_alarme();",
-    resfriar: "ativar_resfriamento();"
+    ativar_circuito: "ativar_circuito_controle();",
+    abrir:           "abrir_porta();",
+    bloquear:        "manter_bloqueada();",
+    alarme:          "ativar_alarme();",
+    resfriar:        "ativar_resfriamento();"
 };
 
 // ==========================================================
-// AS 3 FASES
+// AS 3 FASES DO DIAGNOSTICO
 // ==========================================================
 fases = [
 
-    // ---------------- FASE 1 : ENERGIA ----------------
+    // ---------------- FASE 1: ALIMENTACAO ----------------
     {
         nome: "ENERGIA",
-        titulo: "FASE 1 - ENERGIA DA PORTA",
-        contexto: "A porta eletrica depende da bateria. Ela so deve abrir quando a energia estiver no minimo em 50%. Monte a regra do sistema.",
-        objetivo_txt: "a porta deve ABRIR",
-        objetivo: "abrir",
+        titulo: "FASE 1 - ALIMENTACAO DO SISTEMA",
+        contexto: "A porta nao responde. O circuito precisa de pelo menos 50% de bateria para funcionar. A carga atual e 78%. Verifique se a alimentacao pode ser ativada.",
+        objetivo_txt: "ATIVAR O CIRCUITO DE CONTROLE",
+        objetivo: "ativar_circuito",
         variaveis: [
             ["energia", string(energia) + "%"],
-            ["requisito_minimo", "50%"]
+            ["requisito_minimo", string(requisito_minimo) + "%"]
         ],
         condicoes: [
-            { txt: "energia >= 50",  valor: (energia >= 50)  },
-            { txt: "energia < 50",   valor: (energia < 50)   },
-            { txt: "energia == 100", valor: (energia == 100) }
+            { txt: "energia >= requisito_minimo", valor: (energia >= requisito_minimo) },
+            { txt: "energia < requisito_minimo",  valor: (energia < requisito_minimo)  },
+            { txt: "energia == 100",              valor: (energia == 100)              }
         ],
         entao: [
-            { txt: "ABRIR PORTA",      acao: "abrir"    },
-            { txt: "MANTER BLOQUEADA", acao: "bloquear" },
-            { txt: "ATIVAR ALARME",    acao: "alarme"   }
+            { txt: "ATIVAR CIRCUITO",    acao: "ativar_circuito" },
+            { txt: "MANTER BLOQUEADA",   acao: "bloquear"        },
+            { txt: "ATIVAR ALARME",      acao: "alarme"          }
         ],
         senao: [
-            { txt: "MANTER BLOQUEADA", acao: "bloquear" },
-            { txt: "ABRIR PORTA",      acao: "abrir"    },
-            { txt: "ATIVAR ALARME",    acao: "alarme"   }
+            { txt: "MANTER BLOQUEADA",   acao: "bloquear"        },
+            { txt: "ATIVAR CIRCUITO",    acao: "ativar_circuito" },
+            { txt: "ATIVAR ALARME",      acao: "alarme"          }
         ],
-        dica: "Compare a energia com o minimo. 78 >= 50 e VERDADEIRO ou FALSO? Se for verdadeiro, quem executa?",
-        explicacao: "Lembre: com energia 78, a condicao (energia >= 50) e VERDADEIRA e (energia < 50) e FALSA. Varias regras diferentes podem chegar ao mesmo resultado!"
+        dica: "A bateria esta em 78% e o minimo e 50%. A comparacao energia >= requisito_minimo e VERDADEIRA. Nesse caso, qual acao deve ficar no ENTAO?",
+        explicacao: "A bateria esta acima do minimo exigido. Como a condicao e VERDADEIRA, o ENTAO executa ATIVAR CIRCUITO. A porta ainda nao abre: primeiro estamos restabelecendo a alimentacao.",
+        erro_txt: "A bateria tem 78%, acima do minimo de 50%. O circuito pode ser ativado. Confira qual ramo sera executado e escolha ATIVAR CIRCUITO nesse ramo."
     },
 
-    // ---------------- FASE 2 : CODIGO ----------------
+    // ---------------- FASE 2: SEGURANCA ----------------
     {
-        nome: "CODIGO",
-        titulo: "FASE 2 - TECLADO DE CODIGO",
-        contexto: "Alguem digitou um codigo no teclado da porta. O sistema precisa comparar o codigo digitado com o codigo correto.",
-        objetivo_txt: "codigo errado deve ATIVAR O ALARME",
-        objetivo: "alarme",
+        nome: "SEGURANCA",
+        titulo: "FASE 2 - TESTE DO TECLADO",
+        contexto: "O circuito foi reativado. O teclado recebeu o codigo 4712, mas o codigo autorizado e 4721. Esta e a primeira tentativa invalida. Apos 3 falhas, o alarme dispara.",
+        objetivo_txt: "MANTER A PORTA BLOQUEADA",
+        objetivo: "bloquear",
         variaveis: [
             ["codigo_digitado", codigo_digitado],
             ["codigo_correto", codigo_correto],
-            ["tentativas", string(tentativas)]
+            ["tentativas", string(tentativas) + " / " + string(tentativas_limite)]
         ],
         condicoes: [
             { txt: "codigo_digitado == codigo_correto", valor: (codigo_digitado == codigo_correto) },
             { txt: "codigo_digitado != codigo_correto", valor: (codigo_digitado != codigo_correto) },
-            { txt: "tentativas >= 3",                    valor: (tentativas >= 3)                  }
+            { txt: "tentativas >= tentativas_limite",  valor: (tentativas >= tentativas_limite)  }
         ],
         entao: [
-            { txt: "ABRIR PORTA",      acao: "abrir"    },
-            { txt: "ATIVAR ALARME",    acao: "alarme"   },
-            { txt: "MANTER BLOQUEADA", acao: "bloquear" }
+            { txt: "ABRIR PORTA",        acao: "abrir"    },
+            { txt: "ATIVAR ALARME",      acao: "alarme"   },
+            { txt: "MANTER BLOQUEADA",   acao: "bloquear" }
         ],
         senao: [
-            { txt: "ATIVAR ALARME",    acao: "alarme"   },
-            { txt: "MANTER BLOQUEADA", acao: "bloquear" },
-            { txt: "ABRIR PORTA",      acao: "abrir"    }
+            { txt: "ATIVAR ALARME",      acao: "alarme"   },
+            { txt: "MANTER BLOQUEADA",   acao: "bloquear" },
+            { txt: "ABRIR PORTA",        acao: "abrir"    }
         ],
-        dica: "Os codigos sao diferentes, entao '==' da FALSO. Quando a condicao e falsa, quem executa? O SENAO!",
-        explicacao: "Os codigos sao diferentes: '==' da FALSO e '!=' da VERDADEIRO. Por isso existem mais de um jeito certo de disparar o alarme!"
+        dica: "O codigo digitado 4712 e diferente do autorizado 4721. Uma possibilidade e usar !=: a condicao sera VERDADEIRA e o ENTAO deve manter a porta bloqueada.",
+        explicacao: "O codigo digitado e diferente do codigo autorizado. Como esta e a primeira tentativa invalida, o sistema deve manter a porta bloqueada. O alarme so sera acionado quando o numero de tentativas chegar a 3.",
+        erro_txt: "O codigo informado esta incorreto e esta e apenas a primeira tentativa invalida. A porta deve continuar bloqueada; o alarme so deve disparar quando tentativas >= 3."
     },
 
-    // ---------------- FASE 3 : TEMPERATURA ----------------
+    // ---------------- FASE 3: MOTOR ----------------
     {
-        nome: "TEMP.",
-        titulo: "FASE 3 - TEMPERATURA DO SISTEMA",
-        contexto: "Os motores da porta estao esquentando. Acima do limite seguro o sistema pode queimar. Proteja o equipamento!",
-        objetivo_txt: "superaquecido: ATIVAR RESFRIAMENTO",
+        nome: "MOTOR",
+        titulo: "FASE 3 - TEMPERATURA DO MOTOR",
+        contexto: "A seguranca do teclado foi testada. Agora verifique o motor: ele esta a 92 C, acima do limite seguro de 80 C. Resfrie o mecanismo antes de liberar a porta.",
+        objetivo_txt: "ATIVAR O RESFRIAMENTO DO MOTOR",
         objetivo: "resfriar",
         variaveis: [
             ["temperatura", string(temperatura) + " C"],
@@ -133,7 +140,7 @@ fases = [
         condicoes: [
             { txt: "temperatura > limite_seguro",  valor: (temperatura > limite_seguro)  },
             { txt: "temperatura <= limite_seguro", valor: (temperatura <= limite_seguro) },
-            { txt: "temperatura == 0",             valor: (temperatura == 0)             }
+            { txt: "temperatura >= limite_seguro", valor: (temperatura >= limite_seguro) }
         ],
         entao: [
             { txt: "ATIVAR RESFRIAMENTO", acao: "resfriar" },
@@ -145,8 +152,9 @@ fases = [
             { txt: "ATIVAR RESFRIAMENTO", acao: "resfriar" },
             { txt: "ATIVAR ALARME",       acao: "alarme"   }
         ],
-        dica: "92 e maior que 80? Entao 'temperatura > limite_seguro' e VERDADEIRA e o ENTAO e quem executa.",
-        explicacao: "Com 92 C, (temperatura > limite_seguro) e VERDADEIRA e (<=) e FALSA. Operadores: > < >= <= == !="
+        dica: "O motor esta a 92 C e o limite seguro e 80 C. Como 92 > 80 e VERDADEIRO, o ENTAO deve ativar o resfriamento.",
+        explicacao: "O motor esta 12 C acima do limite seguro. Como a condicao e VERDADEIRA, o ENTAO executa ATIVAR RESFRIAMENTO. Depois do diagnostico, o sistema podera liberar a porta.",
+        erro_txt: "O motor esta acima da temperatura segura. O ramo que sera executado precisa acionar ATIVAR RESFRIAMENTO antes de liberar a porta."
     }
 ];
 
@@ -235,13 +243,7 @@ avaliar = function()
         shake = 14;
         if (erros_fase >= 2) mostrar_dica = true;
 
-        var explica;
-        if (verdadeira)
-            explica = "A condicao era VERDADEIRA, entao so o ENTAO roda. O SENAO e ignorado.";
-        else
-            explica = "A condicao era FALSA, entao so o SENAO roda. O ENTAO e ignorado.";
-
-        msg = linha1 + "\n" + explica;
+        msg = linha1 + "\n" + fase.erro_txt;
     }
 }
 
@@ -263,7 +265,7 @@ acao_botao = function()
         else
         {
             estado = 0;
-            msg = "Escolha uma condicao, uma acao para o ENTAO e uma para o SENAO antes de executar.";
+            msg = "Antes de executar, escolha uma condicao SE, uma acao para ENTAO e outra para SENAO.";
             shake = 6;
         }
     }
@@ -335,7 +337,7 @@ desenhar_opcao = function(r, texto, selecionado, mx, my, cor_acento)
     }
 
     draw_set_valign(fa_middle);
-    draw_set_color(selecionado ? c_white : cor_cinza);
+    draw_set_color(selecionado ? c_white : cor_texto);
     if (hover && !selecionado) draw_set_color(c_white);
     draw_text(r[0] + 18, (r[1] + r[3]) / 2, texto);
     draw_set_valign(fa_top);
